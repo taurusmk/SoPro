@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ReadLater.Entities
+{
+    public class Bookmark : EntityBase  
+    {
+        [Key]
+        public int ID { get; set; }
+
+        [Url(ErrorMessage = "Please enter a valid url")]
+        [Required]
+        [StringLength(maximumLength: 500)]
+        public string URL {get;set;}
+
+        public string ShortDescription { get; set; }
+
+        public int? CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        public int ClickedCount { get; set; }
+    }
+}
